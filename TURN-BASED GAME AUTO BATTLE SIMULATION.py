@@ -51,7 +51,7 @@ Character = {
 Weapons = {
 "TB": {
     "Name"              : "Thunderbolt",
-    "Profile"           : " A crackling lightning-imbued sword",
+    "Profile"           : "A crackling lightning-imbued sword",
     "Attack"            : 5,
     "HP"                : 2,
     "Defense"           : 0,
@@ -568,12 +568,17 @@ def RemoveList():
         ====Menghapus Karakter, Perlengkapan, atau Monster====
         
         Silahkan pilih yang ingin anda lakukan : 
-        1. Menghapus Karakter
-        2. Menghapus Senjata
-        3. Menghapus Senjata Tangan Kosong
-        4. Menghapus Armor
-        5. Menghapus Monster
-        6. Kembali ke Main Menu
+        1. Menghapus Karakter Tertentu
+        2. Menghapus Senjata Tertentu
+        3. Menghapus Senjata Tangan Kosong Tertentu
+        4. Menghapus Armor Tertentu
+        5. Menghapus Monster Tertentu
+        6. Menghapus Semua Karakter
+        7. Menghapus Semua Senjata
+        8. Menghapus Semua Senjata Tangan Kosong
+        9. Menghapus Semua Armor
+        10. Menghapus Semua Monster
+        11. Kembali ke Main Menu
         """)
     
     #----INISIASI----#
@@ -585,112 +590,151 @@ def RemoveList():
             Opsi3= int(input("Masukkan angka menu yang ingin dijalankan : "))
             #--PENGHAPUSAN KARAKTER--#
             if Opsi3==1:
-                CharacterList()
-                input3 = input("Masukkan ID karakter yang ingin dihapus : ")
-                if input3.upper() in Character:
-                    CekInput = {input3 : Character[input3]}
-                    print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
-                    SaveData = input("Apakah anda yakin ingin menghapus karakter tersebut (ya/tidak)? ")
-                    if SaveData.lower()=="ya":
-                        Character.pop(input3.upper())
-                        print("Karakter berhasil dihapus!")
-                        CharacterList()
-                        return RemoveList()
-                    elif SaveData.lower()=="tidak":
-                        return RemoveList()
+                if bool(Character)==True:
+                    CharacterList()
+                    input3 = input("Masukkan ID karakter yang ingin dihapus : ")
+                    if input3.upper() in Character:
+                        CekInput = {input3 : Character[input3]}
+                        print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
+                        SaveData = input("Apakah anda yakin ingin menghapus karakter tersebut (ya/tidak)? ")
+                        if SaveData.lower()=="ya":
+                            Character.pop(input3.upper())
+                            print("Karakter berhasil dihapus!")
+                            CharacterList()
+                            return RemoveList()
+                        elif SaveData.lower()=="tidak":
+                            return RemoveList()
+                        else:
+                            print("""
+                            Input yang dimasukkan tidak sesuai!
+                            Program akan kembali ke menu sebelumnya
+                            """)
+                            return RemoveList()
                     else:
-                        print("""
-                        Input yang dimasukkan tidak sesuai!
-                        Program akan kembali ke menu sebelumnya
-                        """)
+                        print("Karakter tidak tersedia")
                         return RemoveList()
-                else:
-                    print("Karakter tidak tersedia")
+                else :
+                    print("Tidak ada karakter yang dapat dihapus!")
                     return RemoveList()
             #--PENGHAPUSAN SENJATA--#
             elif Opsi3==2:
-                WeaponList()
-                input3 = input("Masukkan ID senjata yang ingin dihapus : ")
-                if input3.upper() in Weapons:
-                    CekInput = {input3 : Weapons[input3]}
-                    print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
-                    SaveData = input("Apakah anda yakin ingin menghapus senjata tersebut (ya/tidak)? ")
-                    if SaveData.lower()=="ya":
-                        Weapons.pop(input3.upper())
-                        print("Senjata berhasil dihapus!")
-                        WeaponList()
-                        return RemoveList()
-                    elif SaveData.lower()=="tidak":
-                        return RemoveList()
+                if bool(Weapons)==True:
+                    WeaponList()
+                    input3 = input("Masukkan ID senjata yang ingin dihapus : ")
+                    if input3.upper() in Weapons:
+                        CekInput = {input3 : Weapons[input3]}
+                        print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
+                        SaveData = input("Apakah anda yakin ingin menghapus senjata tersebut (ya/tidak)? ")
+                        if SaveData.lower()=="ya":
+                            Weapons.pop(input3.upper())
+                            print("Senjata berhasil dihapus!")
+                            WeaponList()
+                            return RemoveList()
+                        elif SaveData.lower()=="tidak":
+                            return RemoveList()
+                        else:
+                            print("""
+                            Input yang dimasukkan tidak sesuai!
+                            Program akan kembali ke menu sebelumnya
+                            """)
+                            return RemoveList()
                     else:
-                        print("""
-                        Input yang dimasukkan tidak sesuai!
-                        Program akan kembali ke menu sebelumnya
-                        """)
+                        print("Senjata tidak tersedia")
                         return RemoveList()
-                else:
-                    print("Senjata tidak tersedia")
+                else :
+                    print("Tidak ada senjata yang dapat dihapus!")
                     return RemoveList()
             #--PENGHAPUSAN SENJATA TANGAN KOSONG--#
             elif Opsi3==3:
-                OffHandWeaponList()
-                input3 = input("Masukkan ID senjata tangan kosong yang ingin dihapus : ")
-                if input3.upper() in OffHandWeapons:
-                    CekInput = {input3 : OffHandWeapons[input3]}
-                    print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
-                    SaveData = input("Apakah anda yakin ingin menghapus senjata tangan kosong tersebut (ya/tidak)? ")
-                    if SaveData.lower()=="ya":
-                        OffHandWeapons.pop(input3.upper())
-                        print("Senjata tangan kosong berhasil dihapus!")
-                        OffHandWeaponList()
-                        return RemoveList()
-                    elif SaveData.lower()=="tidak":
-                        return RemoveList()
+                if bool(OffHandWeapons)==True:
+                    OffHandWeaponList()
+                    input3 = input("Masukkan ID senjata tangan kosong yang ingin dihapus : ")
+                    if input3.upper() in OffHandWeapons:
+                        CekInput = {input3 : OffHandWeapons[input3]}
+                        print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
+                        SaveData = input("Apakah anda yakin ingin menghapus senjata tangan kosong tersebut (ya/tidak)? ")
+                        if SaveData.lower()=="ya":
+                            OffHandWeapons.pop(input3.upper())
+                            print("Senjata tangan kosong berhasil dihapus!")
+                            OffHandWeaponList()
+                            return RemoveList()
+                        elif SaveData.lower()=="tidak":
+                            return RemoveList()
+                        else:
+                            print("""
+                            Input yang dimasukkan tidak sesuai!
+                            Program akan kembali ke menu sebelumnya
+                            """)
+                            return RemoveList()
                     else:
-                        print("""
-                        Input yang dimasukkan tidak sesuai!
-                        Program akan kembali ke menu sebelumnya
-                        """)
+                        print("Senjata tangan kosong tidak tersedia")
                         return RemoveList()
-                else:
-                    print("Senjata tangan kosong tidak tersedia")
+                else :
+                    print("Tidak ada senjata tangan kosong yang dapat dihapus!")
                     return RemoveList()
             #--PENGHAPUSAN ARMOR--#
             elif Opsi3==4:
-                ArmorList()
-                input3 = input("Masukkan ID armor yang ingin : ")
-                if input3.upper() in Armor:
-                    CekInput = {input3 : Armor[input3]}
-                    print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
-                    SaveData = input("Apakah anda yakin ingin menghapus armor tersebut (ya/tidak)? ")
-                    if SaveData.lower()=="ya":
-                        Armor.pop(input3.upper())
-                        print("Armor berhasil dihapus!")
-                        ArmorList()
-                        return RemoveList()
-                    elif SaveData.lower()=="tidak":
-                        return RemoveList()
+                if bool(Armor)==True:
+                    ArmorList()
+                    input3 = input("Masukkan ID armor yang ingin : ")
+                    if input3.upper() in Armor:
+                        CekInput = {input3 : Armor[input3]}
+                        print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
+                        SaveData = input("Apakah anda yakin ingin menghapus armor tersebut (ya/tidak)? ")
+                        if SaveData.lower()=="ya":
+                            Armor.pop(input3.upper())
+                            print("Armor berhasil dihapus!")
+                            ArmorList()
+                            return RemoveList()
+                        elif SaveData.lower()=="tidak":
+                            return RemoveList()
+                        else:
+                            print("""
+                            Input yang dimasukkan tidak sesuai!
+                            Program akan kembali ke menu sebelumnya
+                            """)
+                            return RemoveList()
                     else:
-                        print("""
-                        Input yang dimasukkan tidak sesuai!
-                        Program akan kembali ke menu sebelumnya
-                        """)
+                        print("Armor tidak tersedia")
                         return RemoveList()
-                else:
-                    print("Armor tidak tersedia")
+                else :
+                    print("Tidak ada armor yang dapat dihapus!")
                     return RemoveList()
             #--PENGHAPUSAN MONSTER--#
             elif Opsi3==5:
-                MonsterList()
-                input3 = input("Masukkan ID monster yang ingin dihapus : ")
-                if input3.upper() in Monster:
-                    CekInput = {input3 : Monster[input3]}
-                    print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
-                    SaveData = input("Apakah anda yakin ingin menghapus monster tersebut (ya/tidak)? ")
+                if bool(Monster)==True:
+                    MonsterList()
+                    input3 = input("Masukkan ID monster yang ingin dihapus : ")
+                    if input3.upper() in Monster:
+                        CekInput = {input3 : Monster[input3]}
+                        print(tabulate([[name, *inner.values()] for name, inner in CekInput.items()], headers, tablefmt="fancy_outline"))
+                        SaveData = input("Apakah anda yakin ingin menghapus monster tersebut (ya/tidak)? ")
+                        if SaveData.lower()=="ya":
+                            Monster.pop(input3.upper())
+                            print("Monster berhasil dihapus!")
+                            MonsterList()
+                            return RemoveList()
+                        elif SaveData.lower()=="tidak":
+                            return RemoveList()
+                        else:
+                            print("""
+                            Input yang dimasukkan tidak sesuai!
+                            Program akan kembali ke menu sebelumnya
+                            """)
+                            return RemoveList()
+                    else:
+                        print("Monster tidak tersedia")
+                        return RemoveList()
+                else :
+                    print("Tidak ada monster yang dapat dihapus!")
+                    return RemoveList()
+            #--PENGHAPUSAN SEMUA KARAKTER--#
+            elif Opsi3==6:
+                if bool(Character)==True:
+                    CharacterList()
+                    SaveData = input("Apakah anda yakin ingin menghapus semua karakter (ya/tidak)? ")
                     if SaveData.lower()=="ya":
-                        Monster.pop(input3.upper())
-                        print("Monster berhasil dihapus!")
-                        MonsterList()
+                        Character.clear()
                         return RemoveList()
                     elif SaveData.lower()=="tidak":
                         return RemoveList()
@@ -700,11 +744,82 @@ def RemoveList():
                         Program akan kembali ke menu sebelumnya
                         """)
                         return RemoveList()
-                else:
-                    print("Monster tidak tersedia")
-                    return RemoveList()
+                else :
+                    print("Tidak ada karakter yang dapat dihapus!")
+            #--PENGHAPUSAN SEMUA SENJATA--#
+            elif Opsi3==7:
+                if bool(Weapons)==True:
+                    WeaponList()
+                    SaveData = input("Apakah anda yakin ingin menghapus semua senjata (ya/tidak)? ")
+                    if SaveData.lower()=="ya":
+                        Weapons.clear()
+                        return RemoveList()
+                    elif SaveData.lower()=="tidak":
+                        return RemoveList()
+                    else:
+                        print("""
+                        Input yang dimasukkan tidak sesuai!
+                        Program akan kembali ke menu sebelumnya
+                        """)
+                        return RemoveList()
+                else :
+                    print("Tidak ada senjata yang dapat dihapus!")
+            #--PENGHAPUSAN SEMUA SENJATA TANGAN KOSONG--#
+            elif Opsi3==8:
+                if bool(OffHandWeapons)==True:
+                    OffHandWeaponList()
+                    SaveData = input("Apakah anda yakin ingin menghapus semua senjata tangan kosong (ya/tidak)? ")
+                    if SaveData.lower()=="ya":
+                        OffHandWeapons.clear()
+                        return RemoveList()
+                    elif SaveData.lower()=="tidak":
+                        return RemoveList()
+                    else:
+                        print("""
+                        Input yang dimasukkan tidak sesuai!
+                        Program akan kembali ke menu sebelumnya
+                        """)
+                        return RemoveList()
+                else :
+                    print("Tidak ada senjata tangan kosong yang dapat dihapus!")
+            #--PENGHAPUSAN SEMUA ARMOR--#
+            elif Opsi3==9:
+                if bool(Armor)==True:
+                    ArmorList()
+                    SaveData = input("Apakah anda yakin ingin menghapus semua armor (ya/tidak)? ")
+                    if SaveData.lower()=="ya":
+                        Armor.clear()
+                        return RemoveList()
+                    elif SaveData.lower()=="tidak":
+                        return RemoveList()
+                    else:
+                        print("""
+                        Input yang dimasukkan tidak sesuai!
+                        Program akan kembali ke menu sebelumnya
+                        """)
+                        return RemoveList()
+                else :
+                    print("Tidak ada armor yang dapat dihapus!")
+            #--PENGHAPUSAN SEMUA MONSTER--#
+            elif Opsi3==10:
+                if bool(Monster)==True:
+                    MonsterList()
+                    SaveData = input("Apakah anda yakin ingin menghapus semua monster (ya/tidak)? ")
+                    if SaveData.lower()=="ya":
+                        Monster.clear()
+                        return RemoveList()
+                    elif SaveData.lower()=="tidak":
+                        return RemoveList()
+                    else:
+                        print("""
+                        Input yang dimasukkan tidak sesuai!
+                        Program akan kembali ke menu sebelumnya
+                        """)
+                        return RemoveList()
+                else :
+                    print("Tidak ada monster yang dapat dihapus!")
             #--KEMBALI KE MAIN MENU--#
-            elif Opsi3==6:
+            elif Opsi3==11:
                 return
             else:
                 print("Tolong masukkan angka yang tersedia!")
