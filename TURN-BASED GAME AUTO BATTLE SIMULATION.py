@@ -1595,7 +1595,7 @@ def ChooseCharacter():
     #----PILIH KARAKTER YANG AKAN DIPAKAI----#
     PilihKarakter = input("Silahkan pilih karakter yang ingin digunakan berdasarkan ID : ")
     if PilihKarakter.upper() in Character:
-        SaveData = input("Apakah anda yakin ingin memilih karakter tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu sebelumnya apabila anda tidak yakin saat memilih perlengkapan!)")
+        SaveData = input("Apakah anda yakin ingin memilih karakter tersebut (ya/tidak)?")
         if SaveData.lower()=="ya":
             Nama_Karakter = Character[PilihKarakter.upper()]["Name"]
             ATK_Karakter = Character[PilihKarakter.upper()]["Attack"]
@@ -1605,7 +1605,7 @@ def ChooseCharacter():
             #----PILIH SENJATA YANG AKAN DIPAKAI----#
             PilihSenjata= input("Silahkan pilih senjata yang ingin digunakan berdasarkan ID : ")
             if PilihSenjata.upper() in Weapons:
-                SaveData = input("Apakah anda yakin ingin memilih senjata tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu sebelumnya apabila anda tidak yakin saat memilih perlengkapan!)")
+                SaveData = input("Apakah anda yakin ingin memilih senjata tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu pemilihan karakter apabila anda tidak yakin saat memilih perlengkapan!)")
                 if SaveData.lower()=="ya":
                     ATK_Karakter += Weapons[PilihSenjata.upper()]["Attack"]
                     HP_Karakter += Weapons[PilihSenjata.upper()]["HP"]
@@ -1614,7 +1614,7 @@ def ChooseCharacter():
                     #----PILIH SENJATA TANGAN KOSONG YANG AKAN DIPAKAI----#
                     PilihSenjataOF = input("Silahkan pilih senjata tangan kosong yang ingin digunakan berdasarkan ID : ")
                     if PilihSenjataOF.upper() in OffHandWeapons:
-                        SaveData = input("Apakah anda yakin ingin memilih senjata tangan kosong tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu sebelumnya apabila anda tidak yakin saat memilih perlengkapan!)")
+                        SaveData = input("Apakah anda yakin ingin memilih senjata tangan kosong tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu pemilihan karakter apabila anda tidak yakin saat memilih perlengkapan!)")
                         if SaveData.lower()=="ya":
                             ATK_Karakter += OffHandWeapons[PilihSenjataOF.upper()]["Attack"]
                             HP_Karakter += OffHandWeapons[PilihSenjataOF.upper()]["HP"]
@@ -1623,7 +1623,7 @@ def ChooseCharacter():
                             #----PILIH ARMOR YANG AKAN DIPAKAI----#
                             PilihArmor = input("Silahkan pilih armor yang ingin digunakan berdasarkan ID : ")
                             if PilihArmor.upper() in Armor:
-                                SaveData = input("Apakah anda yakin ingin memilih armor tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu sebelumnya apabila anda tidak yakin saat memilih perlengkapan!)")
+                                SaveData = input("Apakah anda yakin ingin memilih armor tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu pemilihan karakter apabila anda tidak yakin saat memilih perlengkapan!)")
                                 if SaveData.lower()=="ya":
                                     ATK_Karakter += Armor[PilihArmor.upper()]["Attack"]
                                     HP_Karakter += Armor[PilihArmor.upper()]["HP"]
@@ -1676,7 +1676,7 @@ def ChooseMonster():
     MonsterList()
     PilihMonster = input("Silahkan pilih monster yang ingin dilawan berdasarkan ID : ")
     if PilihMonster.upper() in Monster:
-        SaveData = input("Apakah anda yakin ingin melawan monster tersebut (ya/tidak)? \n(Note : Anda akan balik ke menu sebelumnya apabila anda tidak yakin saat memilih perlengkapan!)")
+        SaveData = input("Apakah anda yakin ingin melawan monster tersebut (ya/tidak)? ")
         if SaveData.lower()=="ya":
             Nama_Monster = Monster[PilihMonster.upper()]["Name"]
             ATK_Monster = Monster[PilihMonster.upper()]["Attack"]
