@@ -1,6 +1,6 @@
 # Turn-based Game Auto-battle Simulation
 
-##Overview
+## Overview
 This code is turn-based game auto-battle simulation program. This program allows users to simulate battles between characters and monsters, where characters can use weapons, off-hand weapons, and armor to improve their character status before fighting monsters. Users can also read, create, delete, and update characters, equipment, and monsters. The battle logic uses damage based on the attack and defense of characters and monsters, as well as random critical hits to make the outcome of battles more varied.
 
 ## Features
